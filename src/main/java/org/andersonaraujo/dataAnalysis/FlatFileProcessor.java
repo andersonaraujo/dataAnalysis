@@ -98,7 +98,7 @@ public class FlatFileProcessor implements Callable<Boolean> {
         this.fileName = fileName;
         this.inputDirectory = inputDirectory;
         this.outputDirectory = outputDirectory;
-        logger.debug("New instance created for file '{}'.", fileName);
+        logger.debug("New thread execution created for file '{}'.", fileName);
     }
 
     @Override
@@ -115,6 +115,7 @@ public class FlatFileProcessor implements Callable<Boolean> {
         if (!isValid()) {
             return Boolean.FALSE;
         }
+        logger.debug("Starting to process file '{}'.", fileName);
 
         // Reads the file line by line
         try (Stream<String> stream = Files.lines(Paths.get(fullPathToInputFile()))) {
@@ -123,10 +124,11 @@ public class FlatFileProcessor implements Callable<Boolean> {
 
             writeOutput();
 
+            logger.debug("Finished to process file '{}'.", fileName);
             return Boolean.TRUE;
 
         } catch (Exception e) {
-            logger.error(String.format("Error occurred while processing the file '%s'.", fileName), e);
+            logger.error("Error occurred while processing the file '{}': {}", fileName, e.getMessage());
             return Boolean.FALSE;
         }
     }
@@ -282,7 +284,7 @@ public class FlatFileProcessor implements Callable<Boolean> {
         // Verifies the file has the correct extension
         String extension = file.getName().substring(file.getName().lastIndexOf(".") + 1);
         if (!VALID_EXTENSION.equalsIgnoreCase(extension)) {
-            logger.error("File '{}' has an invalid extension.", fileName);
+            logger.error("File '{}' has an invalid extension. It will be ignored.", fileName);
             return false;
         }
 

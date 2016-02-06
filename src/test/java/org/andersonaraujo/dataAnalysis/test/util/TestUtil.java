@@ -1,4 +1,4 @@
-package org.andersonaraujo.dataAnalysis.org.andersonaraujo.dataAnalysis.test.util;
+package org.andersonaraujo.dataAnalysis.test.util;
 
 import java.lang.reflect.Field;
 

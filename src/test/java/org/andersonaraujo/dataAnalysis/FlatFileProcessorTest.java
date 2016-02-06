@@ -1,6 +1,6 @@
 package org.andersonaraujo.dataAnalysis;
 
-import org.andersonaraujo.dataAnalysis.org.andersonaraujo.dataAnalysis.test.util.TestUtil;
+import org.andersonaraujo.dataAnalysis.test.util.TestUtil;
 import org.junit.Test;
 
 import java.io.File;

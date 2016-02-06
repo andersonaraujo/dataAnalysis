@@ -3,34 +3,33 @@
 Flat files reader built in Java.
 
 
+## 1. Quick Start
+
+1 - Sets an enviroment variable name 'OMEPATH'.
+    It will be used to read/write files.
+
+2 - Build the Data Analysis application using Maven,
+    from the root dataAnalysis directory:
+
+    mvn clean install
+
+3 - Start the application running the jar file:
+
+    java -jar target/dataAnalysis-1.0.jar
+
+#### Note
+
+The application will start to process new files saved to the directory
+%HOMEPATH%/data/in after the application started.
+Any previous existing files in that directory won't be processed.
 
 
-
-## Quick Start
-
-1 - Create a new MySQL database called etracker and run the scripts located at: etracker-server/scripts/database
-
-2 - Build the Etracker backend server: mvn clean install
-
-3 - Start the backend server: java -jar etracker-server/target/etracker-server-1.0.jar
-
-    The backend server will run in the port 8090
-    To perform calls to the REST API, use these client credentials:
-    User: etracker-client
-    Password: oRUYY81378
-    Grant type: password
-
-
-
-
-
-
-## Requirements
+## 2. Requirements
 
 The system must be able to import lots of flat files, read and analyse
 the data, and output a report.
 
-### Flat file layout (INPUT)
+### 2.1 Flat file layout (INPUT)
 
 There are 3 kinds of data inside those files .For each kind of data there
 is a different layout.
@@ -65,7 +64,7 @@ able to read. Note that this is a sample, real data could be 100% different.
     003ç10ç[1-10-100,2-30-2.50,3-40-3.10]çDiego
     003ç08ç[1-34-10,2-33-1.50,3-40-0.10]çRenato
 
-### Data analysis
+### 2.2 Data analysis
 
 The system must read data from the default directory,
 located at %HOMEPATH%/data/in. The system must only read .dat files.
@@ -86,7 +85,7 @@ This application should be running all the time, without any breaks.
 Everytime new files become available, everything should be executed.
 
 
-### Flat file layout (OUTPUT)
+### 2.3 Flat file layout (OUTPUT)
 
 There are 4 kinds of data inside those files. For each kind of data there
 is a different layout. There will be only one line of each kind of data.
